@@ -1,19 +1,9 @@
 import React, { InputHTMLAttributes } from "react"
 
-interface InputPropsInterface {
-type: string,
-placeholder: string,
-alt: string
 
-}
-
-interface IProps extends InputHTMLAttributes<HTMLInputElement>{
-inputProps : InputPropsInterface
-}
-
-const Input = ({inputProps}: IProps) => {
+const Input = ({...otherProps}: InputHTMLAttributes<HTMLInputElement>) => {
     return (<>
-    <input {...inputProps} />
+    <input {...otherProps} />
     </>)
 }
 
