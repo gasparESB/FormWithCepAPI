@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Adress, FormType } from "../../types/formTypes";
+import { Adress, FormType } from "../../types/FormTypes";
 import Input from "../Input";
 
 import styles from "./styles.module.scss";
