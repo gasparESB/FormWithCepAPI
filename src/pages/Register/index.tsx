@@ -3,9 +3,9 @@ import styles from "./styles.module.scss"
 
 const Register = () => {
   return (
-    <div className={styles.registerWrapper}>
+    <main className={styles.registerWrapper}>
       <Form />
-    </div>
+    </main>
   );
 };
 
