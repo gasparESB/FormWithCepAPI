@@ -1,6 +1,5 @@
 .form__section {
   display: flex;
-  background-color: aqua;
   justify-content: center;
   align-items: center;
   width: 500px;
@@ -11,8 +10,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 600px;
+  width: 320px;
   flex-direction: column;
+}
+
+.adress__inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  flex: 1 2 auto;
 }
 
 .form__button {
@@ -20,11 +26,6 @@
   height: 32px;
   font-weight: 600;
   border-style: none;
-  background-color: rgb(20, 209, 99);
+  background-color: #fff07c;
   border-radius: 4px;
-}
-
-.form__userLocation {
-  gap: 8px;
-  background-color: antiquewhite;
 }

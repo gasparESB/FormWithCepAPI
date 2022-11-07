@@ -6,7 +6,9 @@ import Input from "../Input";
 import styles from "./styles.module.scss";
 
 const Form = () => {
-  const [adress, setAdress] = useState<Adress>();
+  const [adress, setAdress] = useState<Adress>({} as Adress);
+
+  const adressInformation: string[] = ["uf", "bairro", "localidade", "logradouro"]
 
   const { register, handleSubmit, watch, setValue, getValues } = useForm<any>({
     defaultValues: {
@@ -16,14 +18,12 @@ const Form = () => {
   });
 
   if (adress) {
-    setValue("estado", adress.uf);
-    setValue("bairro", adress.bairro);
-    setValue("cidade", adress.localidade);
+    adressInformation.map(a => setValue(a, adress[a]))
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length < 8) {
-      return console.log("Oi");
+      return 
     }
     fetch(`https://viacep.com.br/ws/${e.target.value}/json`)
       .then((response) => response.json())
@@ -33,6 +33,8 @@ const Form = () => {
   const onSubmit = (data: FormType) => {
     console.log(data);
   };
+
+  console.log(adress);
 
   return (
     <section className={styles.form__section}>
@@ -55,32 +57,33 @@ const Form = () => {
           label="senha"
           register={register}
         />
-        <Input
-          type="text"
-          placeholder="CEP"
-          label="cep"
-          register={register}
-          onChange={(e) => handleInputChange(e)}
-        />
-        <Input
-          type="text"
-          placeholder="bairro"
-          label="bairro"
-          register={register}
-        />
-        <Input
-          type="text"
-          placeholder="estado"
-          label="estado"
-          register={register}
-        />
-        <Input
-          type="text"
-          placeholder="cidade"
-          label="cidade"
-          register={register}
-        />
-
+        <div className={styles.adress__inputs}>
+          <Input
+            type="text"
+            placeholder="CEP"
+            label="cep"
+            register={register}
+            onChange={(e) => handleInputChange(e)}
+          />
+          <Input
+            type="text"
+            placeholder="estado"
+            label="uf"
+            register={register}
+          />
+          <Input
+            type="text"
+            placeholder="cidade"
+            label="localidade"
+            register={register}
+          />
+        </div>
+          <Input
+            type="text"
+            placeholder="bairro"
+            label="bairro"
+            register={register}
+          />
         <button type="submit" className={styles.form__button}>
           Enviar
         </button>
